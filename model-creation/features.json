@@ -84,7 +84,7 @@
     {
         "key": "NUMBER_OF_ROOMS",
         "type": "numeric",
-        "displayingName": "Szobák száma",
+        "displayingName": "Egész szobák",
         "min": 1,
         "max": 8
     },
