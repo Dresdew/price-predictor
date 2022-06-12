@@ -1,0 +1,104 @@
+[
+    {
+        "key": "PRICE",
+        "type": "numeric",
+        "unit": "Ft",
+        "displayingName": "Ár",
+        "min": 20,
+        "max": 70
+    },
+    {
+        "key": "SIZE",
+        "type": "numeric",
+        "unit": "négyzetméter",
+        "displayingName": "Méret",
+        "min": 10,
+        "max": 130
+    },
+    {
+        "key": "FLOOR_NUMBER",
+        "type": "enum",
+        "values": [
+            "1. emelet",
+            "4. emelet",
+            "2. emelet",
+            "5. emelet",
+            "3. emelet",
+            "Alagsor",
+            "Félemelet",
+            "Magasföldszint",
+            "Földszint",
+            "7. emelet",
+            "6. emelet",
+            "9. emelet",
+            "8. emelet",
+            "10. emelet",
+            "Tetőtér"
+        ],
+        "displayingName": "Emelet"
+    },
+    {
+        "key": "BUILDING_MATERIAL",
+        "type": "enum",
+        "values": [
+            "Tégla",
+            "Csúsztatott zsalu",
+            "Panel"
+        ],
+        "displayingName": "Építőanyag"
+    },
+    {
+        "key": "HEATING_METHOD",
+        "type": "enum",
+        "values": [
+            "Cirkó",
+            "Házközponti (egyedi mérővel)",
+            "Konvektoros",
+            "Házközponti",
+            "Távfűtés",
+            "Héra",
+            "Egyéb",
+            "Központi",
+            "Villany",
+            "Központi (egyedi mérővel)",
+            "Geotermikus",
+            "Egyedi",
+            "Cserépkályha"
+        ],
+        "displayingName": "Fűtés jellege"
+    },
+    {
+        "key": "STATUS",
+        "type": "enum",
+        "displayingName": "Ingatlan állapota",
+        "values": [
+            "Felújítandó",
+            "Átlagos",
+            "Jó",
+            "Kitűnő",
+            "Felújított",
+            "Szerkezetkész",
+            "Épülő"
+        ]
+    },
+    {
+        "key": "NUMBER_OF_ROOMS",
+        "type": "numeric",
+        "displayingName": "Egész szobák",
+        "min": 1,
+        "max": 8
+    },
+    {
+        "key": "DISTRICT",
+        "type": "enum",
+        "displayingName": "Kerület",
+        "values": [
+            "II-ker",
+            "III-ker",
+            "V-ker",
+            "VI-ker",
+            "VII-ker",
+            "VIII-ker"
+        ]
+    }
+]
