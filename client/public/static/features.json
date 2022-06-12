@@ -22,19 +22,14 @@
         "values": [
             "Alagsor",
             "Földszint",
-            "Magasföldszint",
             "Félemelet",
             "1. emelet",
-            "4. emelet",
             "2. emelet",
-            "5. emelet",
             "3. emelet",
+            "4. emelet",
+            "5. emelet",
             "7. emelet",
-            "6. emelet",
-            "9. emelet",
-            "8. emelet",
-            "10. emelet",
-            "Tetőtér"
+            "6. emelet"
         ],
         "displayingName": "Emelet"
     },
@@ -58,12 +53,9 @@
             "Házközponti",
             "Távfűtés",
             "Héra",
-            "Egyéb",
             "Központi",
-            "Villany",
             "Központi (egyedi mérővel)",
-            "Geotermikus",
-            "Egyedi",
+            "Villany",
             "Cserépkályha"
         ],
         "displayingName": "Fűtés jellege"
@@ -76,10 +68,8 @@
             "Felújítandó",
             "Átlagos",
             "Jó",
-            "Kitűnő",
             "Felújított",
-            "Szerkezetkész",
-            "Épülő"
+            "Kitűnő"
         ]
     },
     {
@@ -94,12 +84,13 @@
         "type": "enum",
         "displayingName": "Kerület",
         "values": [
-            "II-ker",
             "III-ker",
-            "V-ker",
             "VI-ker",
             "VII-ker",
-            "VIII-ker"
+            "VIII-ker",
+            "IX-ker",
+            "XIII-ker",
+            "XIV-ker"
         ]
     }
 ]

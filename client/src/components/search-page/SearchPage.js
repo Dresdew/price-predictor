@@ -7,6 +7,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import PriceDisplayer from 'components/price-displayer';
+
 
 
 export default function SearchPage() {
@@ -50,7 +52,10 @@ export default function SearchPage() {
                 await callPricePredict(featureFilter);
 
             }
-        }} variant="contained">Search</Button>
+        }} style={{color:'white', backgroundColor:'#2c387e'}}>
+            Search
+        </Button>
+        <PriceDisplayer />
 
     </Box>
 }
