@@ -89,7 +89,7 @@
         "max": 8
     },
     {
-        "key": "DISTRICT_NUM",
+        "key": "DISTRICT",
         "type": "enum",
         "displayingName": "Kerület",
         "values": [
