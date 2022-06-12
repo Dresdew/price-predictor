@@ -1,0 +1,23 @@
+.serach_page {
+
+    margin: 20px;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+}
+
+.container {
+    margin: 10px;
+    width:'100%'
+}
+
+.basic_search {
+    width:500px;
+    background-color: #e0e0e0;
+    min-width: 500px;
+
+}

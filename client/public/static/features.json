@@ -5,7 +5,8 @@
         "unit": "Ft",
         "displayingName": "Ár",
         "min": 20,
-        "max": 70
+        "max": 70,
+        "target": true
     },
     {
         "key": "SIZE",
@@ -19,15 +20,15 @@
         "key": "FLOOR_NUMBER",
         "type": "enum",
         "values": [
+            "Alagsor",
+            "Földszint",
+            "Magasföldszint",
+            "Félemelet",
             "1. emelet",
             "4. emelet",
             "2. emelet",
             "5. emelet",
             "3. emelet",
-            "Alagsor",
-            "Félemelet",
-            "Magasföldszint",
-            "Földszint",
             "7. emelet",
             "6. emelet",
             "9. emelet",

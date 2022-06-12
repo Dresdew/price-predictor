@@ -17,7 +17,6 @@ export default function useApp() {
                 const response = await fetch('/static/features.json');
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data)
                     dispatch(setFeatures({ features: data }))
                 } else {
                     const message = response.status;
