@@ -4,19 +4,18 @@ from tensorflow import keras
 import numpy as np
 
 
-class ModelHandler:
+class PricePredictor:
     def __init__(self) -> None:
         self.model = load_model()
         self.feature_order = load_json('./data/feature_order.json')[1:]
         self.features = {f['key']: f for f in load_json(
             './static/features.json')}
 
-    def predict_price(self, feature_filter) -> float:
-        input_arr = self.__construct_input_arr(feature_filter)
-        price = self.model.predict(input_arr)[0, 0]
-        return price
+    def do(self, feature_filter) -> float:
+        input_arr = self.__construct_input_array(feature_filter)
+        return self.model.predict(input_arr)[0, 0]
 
-    def __construct_input_arr(self, feature_filter) -> np.array:
+    def __construct_input_array(self, feature_filter) -> np.array:
         input_arr = np.zeros((1, len(self.feature_order)))
         for key, value in feature_filter.items():
             feature = self.features[key]

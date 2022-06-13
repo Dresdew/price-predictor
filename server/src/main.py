@@ -6,7 +6,7 @@ from fastapi_utils.cbv import cbv
 from fastapi_utils.inferring_router import InferringRouter
 from starlette.responses import FileResponse
 
-from src import dnn_model_handler
+from src import price_predictor
 
 app = FastAPI()
 
@@ -27,18 +27,17 @@ app.mount(
 
 @cbv(router)
 class App:
-    def __init__(self, model_handler=Depends(dnn_model_handler.ModelHandler.create)) -> None:
+    def __init__(self, model_handler=Depends(price_predictor.PricePredictor.create)) -> None:
         self.model_handler = model_handler
 
     @router.get("/")
-    def read_root(self):
+    def home(self):
         return FileResponse('static/website/index.html')
 
     @router.post("/api/predict-price")
     async def predict_price(self, request: Request):
         feature_filter = await request.json()
-        price = self.model_handler.predict_price(feature_filter)
-        print(print)
+        price = self.model_handler.do(feature_filter)
         return {'predictedPrice': float(price)}
 
 
