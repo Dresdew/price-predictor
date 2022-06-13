@@ -17,8 +17,7 @@ export default function SearchPage() {
         featureFilter,
         setFeatureFilter,
         errorMessage,
-        setErrorMessage,
-        callPricePredict } = useSearchPage()
+        handleSearch } = useSearchPage()
 
     return <Box sx={{ boxShadow: 3 }} className={style.serach_page}>
         {errorMessage && <label style={{ color: 'red' }}>{errorMessage}</label>}
@@ -41,24 +40,15 @@ export default function SearchPage() {
                 />
             }
         })}
-        <Button onClick={async () => {
-            const filter = createRequest(features, featureFilter)
-            if (!filter) {
-                setFeatureFilter({})
-                setErrorMessage('Please use correct values')
-            }
-            else {
-                setErrorMessage(null)
-                await callPricePredict(featureFilter);
-
-            }
-        }} style={{color:'white', backgroundColor:'#2c387e'}}>
+        <Button onClick={handleSearch} style={{ color: 'white', backgroundColor: '#2c387e' }}>
             Search
         </Button>
         <PriceDisplayer />
 
     </Box>
 }
+
+
 
 const FeatureSelect = ({ feature, featureFilter, setFeatureFilter }) =>
     <div
@@ -106,23 +96,3 @@ const NumberInput = ({ feature, featureFilter, setFeatureFilter }) =>
         />
     </div>
 
-const createRequest = (features, filter) => {
-    const featureFilter = { ...filter }
-    for (const { key, type, min, max } of features) {
-        if (!featureFilter[key]) {
-            return null
-        }
-        if (type !== 'numeric') {
-            continue
-        }
-        const intValue = parseInt(featureFilter[key])
-        if (isNaN(intValue)) {
-            return null
-        }
-        if ((intValue < min) || (intValue > max)) {
-            return null
-        }
-        featureFilter[key] = intValue
-    }
-    return featureFilter
-}

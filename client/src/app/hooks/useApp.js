@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setError } from "slices/errorSlice";
-import { setFeatures } from "slices/featuresSlice";
+import { setError } from "store/slices/errorSlice";
+import { setFeatures } from "store/slices/featuresSlice";
 import { callFetch } from "app/utils";
 
 

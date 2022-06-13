@@ -1,8 +1,8 @@
 import React from "react";
-import { setError } from "slices/errorSlice";
-
 import { useDispatch, useSelector } from "react-redux";
-import { setPrice } from "slices/priceSlice";
+
+import { setError } from "store/slices/errorSlice";
+import { setPrice } from "store/slices/priceSlice";
 import { callFetch } from "app/utils";
 
 export default function useSearchPage() {
@@ -26,5 +26,45 @@ export default function useSearchPage() {
             body: JSON.stringify(featureFilter)
         })
     }
-    return { features, featureFilter, setFeatureFilter, errorMessage, setErrorMessage, callPricePredict }
+
+    const handleSearch = () => {
+        const filter = createRequest(features, featureFilter)
+        if (!filter) {
+            setFeatureFilter({})
+            setErrorMessage('Please use correct values')
+        }
+        else {
+            setErrorMessage(null)
+            callPricePredict(featureFilter);
+        }
+    }
+
+    const createRequest = (features, filter) => {
+        const featureFilter = { ...filter }
+        for (const { key, type, min, max } of features) {
+            if (!featureFilter[key]) {
+                return null
+            }
+            if (type !== 'numeric') {
+                continue
+            }
+            const intValue = parseInt(featureFilter[key])
+            if (isNaN(intValue)) {
+                return null
+            }
+            if ((intValue < min) || (intValue > max)) {
+                return null
+            }
+            featureFilter[key] = intValue
+        }
+        return featureFilter
+    }
+
+    return {
+        features,
+        featureFilter,
+        setFeatureFilter,
+        errorMessage,
+        handleSearch
+    }
 }
