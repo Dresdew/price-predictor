@@ -1,6 +1,4 @@
 import Box from '@mui/material/Box';
-import useSearchPage from "./hooks/useSearchPage";
-import style from './search-page.module.css'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -9,6 +7,8 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import PriceDisplayer from 'components/price-displayer';
 
+import useSearchPage from "./hooks/useSearchPage";
+import style from './search-page.module.css'
 
 
 export default function SearchPage() {

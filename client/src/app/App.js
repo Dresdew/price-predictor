@@ -19,7 +19,8 @@ function App() {
 
 function LoadingPage() {
 
-  return <div className={style.loading_screen}>
+  return <div
+    className={style.loading_screen}>
     <CircularProgress />
   </div>
 }

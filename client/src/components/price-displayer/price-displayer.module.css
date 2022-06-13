@@ -1,0 +1,6 @@
+.price_displayer {
+    color: #2c387e;
+    display: flex;
+    margin: 20px;
+    font-size: 18px;
+}

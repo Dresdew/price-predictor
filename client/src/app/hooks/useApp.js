@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setError } from "slices/errorSlice";
 import { setFeatures } from "slices/featuresSlice";
+import { callFetch } from "app/utils";
+
 
 export default function useApp() {
     const dispatch = useDispatch();
@@ -12,24 +14,9 @@ export default function useApp() {
         const onFetchFailed = (message) => {
             dispatch(setError({ error: message }));
         }
+        const onFetchSuccess = (data) => dispatch(setFeatures({ features: data }))
         const getFeatures = async () => {
-            try {
-                const response = await fetch('/static/features.json');
-                if (response.ok) {
-                    const data = await response.json();
-                    dispatch(setFeatures({ features: data }))
-                } else {
-                    const message = response.status;
-                    throw new Error(message);
-                }
-            }
-            catch (err) {
-                if (err instanceof SyntaxError) {
-                    onFetchFailed('Bad response from server.');
-                } else {
-                    onFetchFailed(err.message);
-                }
-            }
+            await callFetch('/static/features.json', onFetchSuccess, onFetchFailed)
         };
         getFeatures();
     }, [dispatch]);

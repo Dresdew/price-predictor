@@ -3,6 +3,7 @@ import { setError } from "slices/errorSlice";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setPrice } from "slices/priceSlice";
+import { callFetch } from "app/utils";
 
 export default function useSearchPage() {
     const dispatch = useDispatch()
@@ -13,32 +14,17 @@ export default function useSearchPage() {
     const onFetchFailed = (message) => {
         dispatch(setError({ error: message }));
     }
+    const onFetchSuccess = (data) => dispatch(setPrice(data));
+
     async function callPricePredict(featureFilter) {
-        console.log(featureFilter)
-        try {
-            const response = await fetch('/api/predict-price', {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                method: "POST",
-                body: JSON.stringify(featureFilter)
-            });
-            if (response.ok) {
-                const data = await response.json();
-                dispatch(setPrice(data));
-            } else {
-                const message = response.status;
-                throw new Error(message);
-            }
-        }
-        catch (err) {
-            if (err instanceof SyntaxError) {
-                onFetchFailed('Bad response from server.');
-            } else {
-                onFetchFailed(err.message);
-            }
-        }
+        await callFetch('/api/predict-price', onFetchSuccess, onFetchFailed, {
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            method: "POST",
+            body: JSON.stringify(featureFilter)
+        })
     }
     return { features, featureFilter, setFeatureFilter, errorMessage, setErrorMessage, callPricePredict }
 }
