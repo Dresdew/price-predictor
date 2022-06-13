@@ -1,6 +1,6 @@
-from tensorflow import keras
 import logging
 import json
+from tensorflow import keras
 import numpy as np
 
 
@@ -27,9 +27,9 @@ class ModelHandler:
                 input_arr[0, self.feature_order.index(column_name)] = 1
         return input_arr
 
-
-def create_model_handler() -> ModelHandler:
-    return ModelHandler()
+    @classmethod
+    def create(clsx):
+        return clsx()
 
 
 def load_model():
@@ -43,4 +43,3 @@ def load_model():
 def load_json(path):
     with open(path) as f:
         return json.loads(f.read())
-    logging.error('failed to load json: %s', path)
